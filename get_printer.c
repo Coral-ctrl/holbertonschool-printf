@@ -13,8 +13,8 @@ int (*get_printer(char format))(va_list)
 
 	printer_t symbol[] = {
 		{"c", print_char},
-		{"s", print_string};
-		{"%", print_percent};
+		{"s", print_string},
+		{"%", print_percent},
 		{NULL, NULL}
 	};
 
