@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdio.h>
-
+#include <stdarg.h>
 /**
  * print_char - prints a char
  * @args: variadic list containing the argument to print

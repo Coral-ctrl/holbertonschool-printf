@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdio.h>
-
+#include <stdarg.h>
 /**
  * print_string - print string
  * @var: variadic list containing the argument to print
@@ -11,7 +11,7 @@ int print_string(va_list args)
 {
 	int i;
 	char *string;
-	
+
 	string = va_arg(args, char *);
 
 	if (string == NULL)
