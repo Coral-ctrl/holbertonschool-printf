@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	if (format == NULL)
-	   return (-1);
+		return (-1);
 
 	while (format != NULL && format[i])
 	{
@@ -29,34 +29,40 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				char c = va_arg(args, int);
-				write (1, &c, 1);
+
+				write(1, &c, 1);
 				count++;
-				/* printf("working for the first if"); */
 			}
 			else if (format[i] == 's')
 			{
 				char *s = va_arg(args, char *);
 
 				j = 0;
+
+				if (s == NULL)
+					s = "(null)";
 				while (s[j] != '\0')
 				{
-					write (1, &s[j], 1);
+					write(1, &s[j], 1);
 					j++;
 					count++;
-					/* printf("second while"); */
 				}
+			}
+			else if (format[i] == '%')
+			{
+				write(1, "%", 1);
+				count++;
 			}
 			else
 			{
-				write (1, "%", 1);
-				write (1, &format[i], 1);
+				write(1, "%", 1);
+				write(1, &format[i], 1);
 				count += 2;
-				/* printf("else"); */
 			}
 		}
 		else
 		{
-			write (1, &format[i], 1);
+			write(1, &format[i], 1);
 			count++;
 		}
 		i++;
