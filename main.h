@@ -13,6 +13,11 @@ int print_string(va_list args);
 
 int print_percent(va_list args);
 
+/**
+ * struct printer - Struct printer
+ * @arg: format
+ * @f: The function associated
+ */
 typedef struct printer
 {
 	char *arg;
