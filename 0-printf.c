@@ -27,6 +27,9 @@ int _printf(const char *format, ...)
 			i++;
 			func = get_printer(format[i]);
 
+			if (format[i] == '\0')
+				return (count);
+
 			if (func != NULL)
 				count += func(args);
 			else
