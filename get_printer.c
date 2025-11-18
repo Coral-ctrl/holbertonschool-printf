@@ -18,6 +18,10 @@ int (*get_printer(char format))(va_list)
 		{"b", print_binary},
 		{"d", print_int},
 		{"i", print_int},
+		{"u", print_unsigned},
+		{"o", print_octal},
+		{"x", print_hex_lower},
+		{"X", print_hex_upper},
 		{NULL, NULL}
 	};
 
