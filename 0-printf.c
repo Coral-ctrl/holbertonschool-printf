@@ -25,11 +25,12 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			func = get_printer(format[i]);
 
 			if (format[i] == '\0')
 				return (count);
 
+			func = get_printer(format[i]);
+			
 			if (func != NULL)
 				count += func(args);
 			else
