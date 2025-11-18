@@ -21,16 +21,13 @@ int _printf(const char *format, ...)
 
 	while (format[i])
 	{
-
 		if (format[i] == '%')
 		{
 			i++;
-			/*printf("format[i] is %s\n", format[i]);*/
-
 			if (format[i] == '\0')
 			{
 				va_end(args);
-				return (count);
+				return (-1);
 			}
 
 			func = get_printer(format[i]);
@@ -38,7 +35,10 @@ int _printf(const char *format, ...)
 			if (func != NULL)
 				count += func(args);
 			else
+			{
+				count += _putchar('%');
 				count += _putchar(format[i]);
+			}
 		}
 		else
 			count += _putchar(format[i]);
