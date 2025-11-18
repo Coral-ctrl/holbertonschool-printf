@@ -19,7 +19,7 @@ int print_binary(va_list args)
 
 	if (num == 0)
 	{
-		_putchar(num);
+		_putchar(num + '0');
 		length++;
 		return (length);
 	}
