@@ -3,7 +3,7 @@
 #include <stdarg.h>
 /**
  * print_string - print string
- * @var: variadic list containing the argument to print
+ * @args: variadic list containing the argument to print
  * Return: i to show length
  */
 
