@@ -30,13 +30,14 @@ int _printf(const char *format, ...)
 				return (count);
 
 			func = get_printer(format[i]);
-			
+
 			if (func != NULL)
 				count += func(args);
 			else
 			{
-				count += _putchar('%');
-				count += _putchar(format[i]);
+				return (count);
+				/* count += _putchar('%');
+				   count += _putchar(format[i]); */
 			}
 		}
 		else
