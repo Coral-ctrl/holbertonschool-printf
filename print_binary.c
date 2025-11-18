@@ -19,9 +19,8 @@ int print_binary(va_list args)
 
 	if (num == 0)
 	{
-		_putchar(num);
-		length++;
-		return (length);
+		_putchar(num + '0');
+		return (1);
 	}
 
 	print_binary_rec(num, &length);
