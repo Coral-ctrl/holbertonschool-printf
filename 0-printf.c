@@ -26,12 +26,6 @@ int _printf(const char *format, ...)
 		{
 			i++;
 
-			if (format[i] == '\0')
-			{
-				va_end(args);
-				return (count);
-			}
-
 			func = get_printer(format[i]);
 
 			if (func != NULL)
