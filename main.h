@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <stdarg.h>
+
 int _putchar(char c);
 
 int _printf(const char *format, ...);
@@ -19,12 +20,21 @@ int print_number(unsigned int n);
 
 int print_unsigned(va_list args);
 
+int print_unsigned_recursive(unsigned int n);
+
 int print_octal(va_list args);
+
+int print_octal_recursive(unsigned int n);
 
 int print_hex_lower(va_list args);
 
+int print_hex_lower_recursive(unsigned int n);
+
 int print_hex_upper(va_list args);
 
+int print_hex_upper_recursive(unsigned int n);
+
+int print_S_string(va_list args);
 /**
  * struct printer - Struct printer
  * @arg: format
