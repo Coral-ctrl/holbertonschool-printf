@@ -17,7 +17,7 @@ int _putchar(char c, local_buffer_t *buffptr)
 	}
 	else
 	{
-		write(1, buffptr->buffer, buffptr->position + 1);
+		write(1, buffptr->buffer, buffptr->position);
 		buffptr->position = 0;
 	}
 	return (1);
