@@ -2,41 +2,52 @@
 #define MAIN_H
 #include <stdarg.h>
 
-int _putchar(char c);
+/**
+ * struct local_buffer - struct for local buffer
+ * @buffer: pointer to buffer
+ * @position: position in buffer
+ */
+typedef struct local_buffer
+{
+	char *buffer;
+	int position;
+} local_buffer_t;
+
+int _putchar(char c, local_buffer_t *buffptr);
 
 int _printf(const char *format, ...);
 
-int (*get_printer(char format))(va_list);
+int (*get_printer(char format))(va_list, local_buffer_t *buffptr);
 
-int print_char(va_list args);
+int print_char(va_list args, local_buffer_t *buffptr);
 
-int print_string(va_list args);
+int print_string(va_list args, local_buffer_t *buffptr);
 
-int print_percent(va_list args);
+int print_percent(va_list args, local_buffer_t *buffptr);
 
-int print_binary(va_list args);
+int print_binary(va_list args, local_buffer_t *buffptr);
 
-int print_int(va_list args);
+int print_int(va_list args, local_buffer_t *buffptr);
 
-int print_number(unsigned int n);
+int print_number(unsigned int n, local_buffer_t *buffptr);
 
-int print_unsigned(va_list args);
+int print_unsigned(va_list args, local_buffer_t *buffptr);
 
-int print_unsigned_recursive(unsigned int n);
+int print_unsigned_recursive(unsigned int n, local_buffer_t *buffptr);
 
-int print_octal(va_list args);
+int print_octal(va_list args, local_buffer_t *buffptr);
 
-int print_octal_recursive(unsigned int n);
+int print_octal_recursive(unsigned int n, local_buffer_t *buffptr);
 
-int print_hex_lower(va_list args);
+int print_hex_lower(va_list args, local_buffer_t *buffptr);
 
-int print_hex_lower_recursive(unsigned int n);
+int print_hex_lower_recursive(unsigned int n, local_buffer_t *buffptr);
 
-int print_hex_upper(va_list args);
+int print_hex_upper(va_list args, local_buffer_t *buffptr);
 
-int print_hex_upper_recursive(unsigned int n);
+int print_hex_upper_recursive(unsigned int n, local_buffer_t *buffptr);
 
-int print_S_string(va_list args);
+int print_S_string(va_list args, local_buffer_t *buffptr);
 
 /**
  * struct printer - Struct printer
@@ -46,7 +57,7 @@ int print_S_string(va_list args);
 typedef struct printer
 {
 	char *arg;
-	int (*f)(va_list);
+	int (*f)(va_list, local_buffer_t *buffptr);
 } printer_t;
 
 #endif

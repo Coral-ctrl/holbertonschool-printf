@@ -4,10 +4,11 @@
 /**
  * print_string - print string
  * @args: variadic list containing the argument to print
+ * @buffptr: pointer to buffer
  * Return: i to show length
  */
 
-int print_string(va_list args)
+int print_string(va_list args, local_buffer_t *buffptr)
 {
 	int i;
 	char *string;
@@ -20,7 +21,7 @@ int print_string(va_list args)
 	i = 0;
 	while (string[i] != '\0')
 	{
-		_putchar(string[i]);
+		_putchar(string[i], buffptr);
 		i++;
 	}
 	return (i);
