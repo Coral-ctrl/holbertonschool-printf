@@ -1,6 +1,11 @@
 #include <stdarg.h>
 #include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+void setup_buffer(local_buffer_t *buffptr);
+void empty_buffer(local_buffer_t *buffptr);
 /**
 * _printf - produces output according to a format
 * @format: format string
@@ -12,14 +17,19 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0;
 	int i = 0;
-	int (*func)(va_list);
+	int (*func)(va_list, local_buffer_t *buffptr);
+	local_buffer_t *buffptr;
 
-	if (format == NULL)
+	buffptr = (local_buffer_t *) malloc(sizeof(local_buffer_t));
+
+	if (buffptr == NULL || format == NULL)
 		return (-1);
+
+	setup_buffer(buffptr);
 
 	va_start(args, format);
 
-	while (format[i])
+	while (buffptr->buffer != NULL && format[i])
 	{
 		if (format[i] == '%')
 		{
@@ -33,17 +43,42 @@ int _printf(const char *format, ...)
 			func = get_printer(format[i]);
 
 			if (func != NULL)
-				count += func(args);
+				count += func(args, buffptr);
 			else
 			{
-				count += _putchar('%');
-				count += _putchar(format[i]);
+				count += _putchar('%', buffptr);
+				count += _putchar(format[i], buffptr);
 			}
 		}
 		else
-			count += _putchar(format[i]);
+			count += _putchar(format[i], buffptr);
 		i++;
 	}
+	empty_buffer(buffptr);
 	va_end(args);
 	return (count);
+}
+
+/**
+ * setup_buffer - mallocs memory for buffer
+ * @buffptr: pointer to buffer
+ * Return: nothing/ void
+ */
+void setup_buffer(local_buffer_t *buffptr)
+{
+	buffptr->buffer = malloc(1024 * sizeof(char));
+	buffptr->position = 0;
+}
+
+/**
+ * empty_buffer - empty the buffer and print what the buffer was holding
+ * @buffptr: pointer to buffer
+ * Return: nothing/ void
+ */
+void empty_buffer(local_buffer_t *buffptr)
+{
+	write(1, buffptr->buffer, buffptr->position);
+	free(buffptr->buffer);
+	free(buffptr);
+	buffptr = NULL;
 }

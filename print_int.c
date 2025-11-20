@@ -4,11 +4,11 @@
 /**
  * print_int - prints integer
  * @args: variadic list containing the integer
- *
+ * @buffptr: pointer to buffer
  * Return: number of characters printed
  */
 
-int print_int(va_list args)
+int print_int(va_list args, local_buffer_t *buffptr)
 {
 	int n = va_arg(args, int);
 	int count = 0;
@@ -16,31 +16,31 @@ int print_int(va_list args)
 
 	if (n < 0)
 	{
-		_putchar('-');
+		_putchar('-', buffptr);
 		count++;
 		num = -n;
 	}
 	else
 		num = n;
 
-	count += print_number(num);
+	count += print_number(num, buffptr);
 
 	return (count);
 }
 /**
  * print_number - helper function to print numbers recursively
  * @n: number to print
- *
+ * @buffptr: pointer to buffer
  * Return: number of characters printed
  */
-int print_number(unsigned int n)
+int print_number(unsigned int n, local_buffer_t *buffptr)
 {
 	int count = 0;
 
 	if (n / 10)
-		count += print_number(n / 10);
+		count += print_number(n / 10, buffptr);
 
-	_putchar((n % 10) + '0');
+	_putchar((n % 10) + '0', buffptr);
 	count++;
 
 	return (count);
