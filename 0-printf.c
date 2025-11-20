@@ -77,6 +77,7 @@ void setup_buffer(local_buffer_t *buffptr)
  */
 void empty_buffer(local_buffer_t *buffptr)
 {
+	buffptr->buffer[buffptr->position] = '\0';
 	write(1, buffptr->buffer, buffptr->position);
 	free(buffptr->buffer);
 	free(buffptr);
