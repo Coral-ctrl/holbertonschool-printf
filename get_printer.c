@@ -23,6 +23,7 @@ int (*get_printer(char format))(va_list, local_buffer_t *buffptr)
 		{"x", print_hex_lower},
 		{"X", print_hex_upper},
 		{"S", print_S_string},
+		{"p", print_address},
 		{NULL, NULL}
 	};
 
