@@ -9,16 +9,14 @@
  */
 int _putchar(char c, local_buffer_t *buffptr)
 {
-
-	if (buffptr->position < 1024)
+	buffptr->buffer[buffptr->position] = c;
+	
+	if (buffptr->position == 1023)
 	{
-		buffptr->buffer[buffptr->position] = c;
-		buffptr->position++;
-	}
-	else
-	{
-		write(1, buffptr->buffer, buffptr->position);
+		write(1, buffptr->buffer, buffptr->position + 1);
 		buffptr->position = 0;
+		return (1);
 	}
+	buffptr->position++;
 	return (1);
 }
