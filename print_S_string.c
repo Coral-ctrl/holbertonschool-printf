@@ -6,11 +6,13 @@
  *                  < 32 or >=127) to \xXX format where XX is the hex value
  * @args: variadic list containing the argument to print
  * @buffptr: pointer to buffer
+ * @flag: pointer to flag struct
  * Return: number of characters printed
  */
 
-int print_S_string(va_list args, local_buffer_t *buffptr)
+int print_S_string(va_list args, local_buffer_t *buffptr, flag_t *flag)
 {
+	(void)flag;
 	int i, count = 0;
 	char *string;
 	unsigned char c;

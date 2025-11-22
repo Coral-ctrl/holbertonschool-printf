@@ -5,11 +5,13 @@
  * print_unsigned - prints an unsigned integer
  * @args: variadic list containing the unsigned integer
  * @buffptr: pointer to buffer
+ * @flag: pointer to flag struct
  * Return: number of characters printed
  */
 
-int print_unsigned(va_list args, local_buffer_t *buffptr)
+int print_unsigned(va_list args, local_buffer_t *buffptr, flag_t *flag)
 {
+	(void)flag;
 	unsigned int num = va_arg(args, unsigned int);
 	int count = 0;
 
