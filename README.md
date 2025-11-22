@@ -55,9 +55,8 @@ int main(void)
 }
 
 Output:
-
 Can we get 100%?
-
+```
 # TEAM
 
 * Shan 
