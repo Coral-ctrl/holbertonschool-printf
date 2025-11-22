@@ -15,15 +15,10 @@ int print_address(va_list args, local_buffer_t *buffptr)
 {
 	unsigned long num = va_arg(args, unsigned long);
 	int length = 0;
-	char *string = "(nil)";
 
 	if (num == '\0')
 	{
-		while (string[length] != '\0')
-		{
-			_putchar(string[length], buffptr);
-			length++;
-		}
+		length += _printf("%s", "(nil)");
 		return (length);
 	}
 
