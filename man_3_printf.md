@@ -22,28 +22,19 @@ Each function returned by the **get_printer** function will take the va_list as 
 
 Each conversion specifier is introduced by the character % and ends with the conversion specifier. They define the type of conversion to be applied. 
 
-c
-        Prints a single character
-
-s       Prints each character in array until null terminator is reached
-
-S       
-
-d, i    
-
-b       Converts the integer value to its binary representation without leading zeros and prints it 
-
-p       Converts the pointer value (memory address) to hexadecimal and prints it
-
-%       A '%' character is printed. No argument is converted.
-
-u
-
-o
-
-x
-
-X
+| Conversion Specifier        | Description         |
+| :--- | :--- |
+| c         | Prints a single character        |
+| s         | Prints each character in array until null terminator is reached         |
+| S         |         |
+| d, i         |         |
+| b         | Converts the integer value to its binary representation without leading zeros and prints it         |
+| p         | Converts the pointer value (memory address) to hexadecimal and prints it         |
+| %         | A '%' character is printed. No argument is converted         |
+| u         |         |
+| o         |         |
+| x         |         |
+| X         |         |
 
 # RETURN VALUE
 
