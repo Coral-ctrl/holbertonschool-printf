@@ -46,6 +46,12 @@ int _printf(const char *format, ...)
 			init_flags(&flag);
 			parse_flags(format, &i, &flag);
 
+			if (format[i] == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
+
 			func = get_printer(format[i]);
 
 			if (func != NULL)
