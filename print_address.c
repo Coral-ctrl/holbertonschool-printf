@@ -8,11 +8,13 @@ int *print_addr_rec(unsigned long num, int *length, local_buffer_t *buffptr);
  * print_address - prints memory address
  * @args: variadic list containing the address
  * @buffptr: pointer to buffer
+ * @flag: pointer to flag struct (unused)
  * Return: number of characters printed
  */
 
-int print_address(va_list args, local_buffer_t *buffptr)
+int print_address(va_list args, local_buffer_t *buffptr, flag_t *flag)
 {
+	(void)flag;
 	unsigned long num = va_arg(args, unsigned long);
 	int length = 0;
 

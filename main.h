@@ -62,7 +62,7 @@ int print_hex_upper_recursive(unsigned int n, local_buffer_t *buffptr);
 
 int print_S_string(va_list args, local_buffer_t *buffptr, flag_t *flag);
 
-int print_address(va_list args, local_buffer_t *buffptr);
+int print_address(va_list args, local_buffer_t *buffptr, flag_t *flag);
 
 /**
  * struct printer - Struct printer
