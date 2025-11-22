@@ -1,0 +1,156 @@
+.TH _PRINTF "22 Nov 2025" "1.0" "_printf man page"
+.SH NAME
+_printf \- formatted output conversion
+.SH LIBRARY
+.B Standard C library
+.SH SYNOPSIS
+.B #include "main.h"
+.PP
+.BI "int _printf(const char *" format ", ...);"
+.SH DESCRIPTION
+The
+.BR _printf ()
+function outputs to the stdout according to the format string. To reduce the number of times the write function is called, and therefore optimize performance, a local buffer of 1024 characters is used.
+.SS Format of the format string
+The format string is composed of zero or more directives\(emordinary characters (not %) that are copied unchanged to stdout and conversion specifiers that tell
+.BR _printf ()
+how to handle the variadic list of arguments. The
+.BR get_printer ()
+function handles each format specifier in the format string and returns a function pointer to the appropriate function to handle the type defined by the specifier.
+.PP
+Each function returned by the
+.BR get_printer ()
+function will take the va_list as an argument and use the
+.BR _putchar ()
+function to print to the stdout. All of these functions return their length to
+.BR _printf ()
+so the total length can be counted and returned at the end of the
+.BR _printf ()
+function.
+.SS FLAG CHARACTERS
+One or more of the following flag characters may appear after the % character to modify the conversion behavior:
+.TP
+.B +
+A sign (+ or \-) should always be placed before a number produced by a signed conversion. Applies to d and i conversions.
+.TP
+.B ' '
+(a space) If no sign is going to be written, a blank space is inserted before the value. This flag is ignored if the + flag is present. Applies to d and i conversions.
+.TP
+.B #
+The value should be converted to an "alternate form". For
+.B o
+conversions, the first character of the output string is made zero (by prefixing a 0 if it was not zero already). For
+.B x
+and
+.B X
+conversions, a nonzero result has the string "0x" (or "0X" for X conversions) prepended to it.
+.SS CONVERSION SPECIFIERS
+Each conversion specifier is introduced by the character % and ends with the conversion specifier. They define the type of conversion to be applied.
+.TP
+.B c
+Prints a single character
+.TP
+.B s
+Prints each character in array until null terminator is reached
+.TP
+.B S
+Prints a string with non-printable characters represented as \\x followed by the ASCII code in hexadecimal (uppercase, 2 characters)
+.TP
+.BR d ", " i
+Converts the integer argument to signed decimal notation and prints it
+.TP
+.B b
+Converts the integer value to its binary representation without leading zeros and prints it
+.TP
+.B p
+Converts the pointer value (memory address) to hexadecimal and prints it
+.TP
+.B %
+A '%' character is printed. No argument is converted
+.TP
+.B u
+Converts the unsigned integer argument to unsigned decimal notation and prints it
+.TP
+.B o
+Converts the unsigned integer argument to unsigned octal notation and prints it
+.TP
+.B x
+Converts the unsigned integer argument to unsigned hexadecimal notation (lowercase) and prints it
+.TP
+.B X
+Converts the unsigned integer argument to unsigned hexadecimal notation (uppercase) and prints it
+.SH RETURN VALUE
+On successful return, these functions return the number of bytes printed (excluding the null terminator at the end of strings).
+.PP
+On error, \-1 is returned.
+.SH EXAMPLES
+.SS Printing a Character
+.EX
+_printf("Character: %c\\n", 'A');
+.EE
+.PP
+Output: "Character: A"
+.SS Printing a String
+.EX
+_printf("My name is %s!\\n", "Bob");
+.EE
+.PP
+Output: "My name is Bob!"
+.SS Printing Binary
+.EX
+_printf("Binary: %b\\n", 98);
+.EE
+.PP
+Output: "Binary: 1100010"
+.SS Printing Pointer Address
+.EX
+_printf("Address: %p\\n", (void *)0x7ffe637541f0);
+.EE
+.PP
+Output: "Address: 0x7ffe637541f0"
+.SS Printing a Percent Sign
+.EX
+_printf("Percent Sign: %%\\n");
+.EE
+.PP
+Output: "Percent Sign: %"
+.SS Printing a Custom String (S)
+.EX
+_printf("Custom: %S\\n", "Best\\nSchool");
+.EE
+.PP
+Output: "Custom: Best\\x0ASchool"
+.SS Printing an Integer (d/i)
+.EX
+_printf("Integer: %d\\n", 1024);
+_printf("Negative: %i\\n", -98);
+.EE
+.PP
+Output: "Integer: 1024"
+.br
+Output: "Negative: -98"
+.SS Printing Unsigned Integer (u)
+.EX
+_printf("Unsigned: %u\\n", 4294967295);
+.EE
+.PP
+Output: "Unsigned: 4294967295"
+.SS Printing Octal (o)
+.EX
+_printf("Octal: %o\\n", 64);
+.EE
+.PP
+Output: "Octal: 100"
+.SS Printing Hexadecimal (x/X)
+.EX
+_printf("Hex lowercase: %x\\n", 255);
+_printf("Hex uppercase: %X\\n", 255);
+.EE
+.PP
+Output: "Hex lowercase: ff"
+.br
+Output: "Hex uppercase: FF"
+.SH BUGS
+No known bugs.
+.SH AUTHORS
+Written by Liani and Shan.
