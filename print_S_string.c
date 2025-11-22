@@ -12,11 +12,12 @@
 
 int print_S_string(va_list args, local_buffer_t *buffptr, flag_t *flag)
 {
-	(void)flag;
 	int i, count = 0;
 	char *string;
 	unsigned char c;
 
+	(void)flag;
+	
 	string = va_arg(args, char *);
 
 	if (string == NULL)

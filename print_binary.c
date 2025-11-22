@@ -14,10 +14,11 @@ int *print_binary_rec(unsigned int num, int *length, local_buffer_t *buffptr);
 
 int print_binary(va_list args, local_buffer_t *buffptr, flag_t *flag)
 {
-	(void)flag;
 	int length = 0;
 	unsigned int num;
 
+	(void)flag;
+	
 	num = va_arg(args, unsigned int);
 
 	if (num == 0)
