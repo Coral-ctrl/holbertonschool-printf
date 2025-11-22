@@ -14,10 +14,11 @@ int *print_addr_rec(unsigned long num, int *length, local_buffer_t *buffptr);
 
 int print_address(va_list args, local_buffer_t *buffptr, flag_t *flag)
 {
-	(void)flag;
 	unsigned long num = va_arg(args, unsigned long);
 	int length = 0;
 
+	(void)flag;
+	
 	if (num == '\0')
 	{
 		length += _printf("%s", "(nil)");

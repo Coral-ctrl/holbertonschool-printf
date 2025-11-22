@@ -11,10 +11,11 @@
 
 int print_unsigned(va_list args, local_buffer_t *buffptr, flag_t *flag)
 {
-	(void)flag;
 	unsigned int num = va_arg(args, unsigned int);
 	int count = 0;
 
+	(void)flag;
+	
 	count += print_unsigned_recursive(num, buffptr);
 
 	return (count);

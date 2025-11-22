@@ -11,10 +11,11 @@
 
 int print_string(va_list args, local_buffer_t *buffptr, flag_t *flag)
 {
-	(void)flag;
 	int i;
 	char *string;
 
+	(void)flag;
+	
 	string = va_arg(args, char *);
 
 	if (string == NULL)
