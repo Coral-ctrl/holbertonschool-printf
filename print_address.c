@@ -22,8 +22,8 @@ int print_address(va_list args, local_buffer_t *buffptr)
 		return (length);
 	}
 
-	_putchar(0 + '0', buffptr);
-	_putchar(0 + 'x', buffptr);
+	length += _putchar(0 + '0', buffptr);
+	length += _putchar(0 + 'x', buffptr);
 
 	print_addr_rec(num, &length, buffptr);
 
