@@ -7,7 +7,7 @@
  * Return: function pointer
  */
 
-int (*get_printer(char format))(va_list, local_buffer_t *buffptr)
+int (*get_printer(char format))(va_list, local_buffer_t *buffptr, flag_t *flag)
 {
 	int i;
 

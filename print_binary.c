@@ -8,11 +8,13 @@ int *print_binary_rec(unsigned int num, int *length, local_buffer_t *buffptr);
  * print_binary - convert unsigned int to binary and print
  * @args: variadic list containing the argument to print
  * @buffptr: pointer to buffer
+ * @flag: pointer to flag struct
  * Return: i to show length
  */
 
-int print_binary(va_list args, local_buffer_t *buffptr)
+int print_binary(va_list args, local_buffer_t *buffptr, flag_t *flag)
 {
+	(void)flag;
 	int length = 0;
 	unsigned int num;
 
