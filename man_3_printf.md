@@ -12,17 +12,17 @@ int _printf((const char *format, ...);
 
 # DESCRIPTION
 
-The function **_printf** outputs to the stdout according to the format string. To reduce the number of times the write function is called, and therefore optimize performance, a local buffer of 1024 characters is used. 
+The function **_printf()** outputs to the stdout according to the format string. To reduce the number of times the write function is called, and therefore optimize performance, a local buffer of 1024 characters is used. 
 
 ### Format of the format string 
 The format string is composed of zero or more directives- ordinary characters (not %) that are copied unchanged to stdout and conversion specifiers that tell **_printf()** how to handle the variadic list of arguments. The **get_printer()** function handles each format specifier in the format string and returns a function pointer to the appropriate function to handle the type defined by the specifier. 
 
 Each function returned by the **get_printer()** function will take the va_list as an argument and use the **_putchar()** function to print to the stdout. All of these fucntions return their length to **_printf()** so the total length can be counted and returned at the end of the **_printf()** function. 
 
-### FLAG CHARACTERS
+# FLAG CHARACTERS
 One or more of the following flag characters may appear after the % character to modify the conversion behavior:
 
-+      A sign (+ or -) should always be placed before a number produced by a signed  conversion.  Applies to d and i conversions.
+\+      A sign (+ or -) should always be placed before a number produced by a signed  conversion.  Applies to d and i conversions.
 
 ' '    (a  space) If no sign is going to be written, a blank space is inserted before the value. This flag is ignored if the + flag is present. Applies to d and i conversions.
 
@@ -36,17 +36,15 @@ Each conversion specifier is introduced by the character % and ends with the con
 | :--- | :--- |
 | c         | Prints a single character        |
 | s         | Prints each character in array until null terminator is reached         |
-| S         |         |
-| d, i         |         |
+| S         | Prints  a string with non-printable characters represented as \x followed by the ASCII code in hexadecimal (uppercase, 2 characters)        |
+| d, i         | Converts the integer argument to signed decimal notation and prints it         |
 | b         | Converts the integer value to its binary representation without leading zeros and prints it         |
 | p         | Converts the pointer value (memory address) to hexadecimal and prints it         |
 | %         | A '%' character is printed. No argument is converted         |
 | u         | Converts the unsigned integer argument to unsigned decimal notation and prints it        |
 | o         | Converts the unsigned integer argument to unsigned octal notation and prints it        |
-| x         | Converts the unsigned integer argument to unsigned hexadecimal notation (lowercase) and prints
-              it        |
-| X         | Converts the unsigned integer argument to unsigned hexadecimal notation (uppercase) and prints
-              it        |
+| x         | Converts the unsigned integer argument to unsigned hexadecimal notation (lowercase) and prints it        |
+| X         | Converts the unsigned integer argument to unsigned hexadecimal notation (uppercase) and prints it        |
 
 # RETURN VALUE
 
@@ -147,4 +145,3 @@ No known bugs
 
 Written by Liani and Shan
 
-_printf man page
